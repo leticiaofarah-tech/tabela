@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Dra. Letícia Farah</title>
+
+<!-- PWA / Add to Home Screen (iPhone) -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Letícia Farah">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#2E1A0E">
+
+<!-- Ícone para a tela de início (gerado inline como SVG em base64) -->
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxODAgMTgwIj48cmVjdCB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4MCIgcng9IjQwIiBmaWxsPSIjMkUxQTBFIi8+PHRleHQgeD0iOTAiIHk9IjEwNSIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iNzIiIGZpbGw9IiNCMDdCNjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkw8L3RleHQ+PC9zdmc+">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --bg: #F5EFE8;
+  --card: #FFFFFF;
+  --mocha: #2E1A0E;
+  --rose: #B07B62;
+  --rose-light: #F0E4DC;
+  --gold: #9A7B4F;
+  --green: #2D6A4F;
+  --green-bg: #EBF5EF;
+  --nude: #DDD0C4;
+  --text: #1E1209;
+  --text-soft: #7A6455;
+  --border: #E8DDD4;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Jost', sans-serif;
+  font-size: 14px;
+  min-height: 100vh;
+}
+
+/* ── HEADER */
+.header {
+  background: var(--mocha);
+  padding: 32px 32px 28px;
+  position: relative;
+  overflow: hidden;
+}
+.header::before {
+  content:'';
+  position:absolute; top:-60px; right:-60px;
+  width:200px; height:200px;
+  border-radius:50%;
+  border: 40px solid rgba(176,123,98,0.15);
+}
+.header::after {
+  content:'';
+  position:absolute; bottom:-40px; left:20%;
+  width:120px; height:120px;
+  border-radius:50%;
+  border: 25px solid rgba(176,123,98,0.1);
+}
+.header-inner { position:relative; z-index:1; }
+.header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px; font-weight:400;
+  color: #F5EFE8;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+.header-sub {
+  font-size:11px; letter-spacing:0.15em; text-transform:uppercase;
+  color: var(--rose); margin-top:6px;
+}
+.header-badges {
+  display:flex; gap:8px; margin-top:16px; flex-wrap:wrap;
+}
+.badge-info {
+  background: rgba(176,123,98,0.2);
+  color: #E8D5C8;
+  border: 1px solid rgba(176,123,98,0.3);
+  border-radius:20px; padding:4px 12px;
+  font-size:11px; letter-spacing:0.06em;
+}
+
+/* ── LEGENDA */
+.legenda {
+  display:flex; gap:12px; padding:14px 24px;
+  background: var(--mocha); border-top:1px solid rgba(255,255,255,0.06);
+  flex-wrap:wrap;
+}
+.leg { display:flex; align-items:center; gap:6px; font-size:11px; color:#C4B4A8; }
+.leg-dot { width:8px; height:8px; border-radius:2px; }
+
+/* ── FILTROS */
+.filters {
+  display:flex; gap:8px; padding:20px 24px 12px;
+  overflow-x:auto; -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
+.filters::-webkit-scrollbar { display:none; }
+.filter-btn {
+  white-space:nowrap;
+  background: var(--card); border: 1.5px solid var(--border);
+  border-radius:24px; padding:7px 16px;
+  font-size:12px; font-weight:500; font-family:'Jost',sans-serif;
+  color: var(--text-soft); cursor:pointer;
+  transition: all 0.2s;
+}
+.filter-btn.active {
+  background: var(--mocha); color:#F5EFE8;
+  border-color: var(--mocha);
+}
+
+/* ── SEÇÕES */
+.section { padding:0 24px 8px; }
+.section-header {
+  display:flex; align-items:center; gap:10px;
+  padding: 20px 0 10px;
+}
+.section-line { flex:1; height:1px; background:var(--border); }
+.section-title {
+  font-family:'Playfair Display',serif;
+  font-size:16px; font-weight:400; font-style:italic;
+  color: var(--gold); white-space:nowrap;
+}
+
+/* ── CARDS DE PROCEDIMENTO */
+.proc-card {
+  background: var(--card);
+  border-radius:12px; margin-bottom:8px;
+  border: 1px solid var(--border);
+  overflow:hidden;
+  transition: box-shadow 0.2s;
+}
+.proc-card:hover { box-shadow: 0 4px 16px rgba(46,26,14,0.08); }
+
+.proc-top {
+  display:flex; align-items:center;
+  padding:14px 16px; gap:12px;
+  cursor:pointer;
+}
+
+.proc-icon {
+  width:36px; height:36px; border-radius:8px;
+  background: var(--rose-light);
+  display:flex; align-items:center; justify-content:center;
+  font-size:16px; flex-shrink:0;
+}
+
+.proc-info { flex:1; min-width:0; }
+.proc-name {
+  font-weight:600; font-size:14px;
+  color: var(--text); white-space:nowrap;
+  overflow:hidden; text-overflow:ellipsis;
+}
+.proc-detail {
+  font-size:11px; color:var(--text-soft); margin-top:2px;
+}
+
+.proc-preco-main {
+  text-align:right; flex-shrink:0;
+}
+.preco-label { font-size:9px; text-transform:uppercase; letter-spacing:0.1em; color:var(--text-soft); }
+.preco-val {
+  font-family:'Playfair Display',serif;
+  font-size:20px; font-weight:500;
+  color: var(--green);
+}
+.preco-val.cartao { color: var(--rose); }
+
+/* ── PREÇOS EXPANDIDOS */
+.proc-precos {
+  display:none;
+  border-top: 1px solid var(--border);
+}
+.proc-precos.open { display:block; }
+
+.preco-row {
+  display:flex; align-items:center;
+  padding:10px 16px; gap:12px;
+  border-bottom:1px solid #F5EFE8;
+}
+.preco-row:last-child { border-bottom:none; }
+
+.preco-tipo {
+  width:90px; font-size:11px; font-weight:600;
+  letter-spacing:0.06em; text-transform:uppercase;
+}
+
+.preco-tipo.avista { color: var(--green); }
+.preco-tipo.c1x    { color: var(--gold); }
+.preco-tipo.c6x    { color: var(--rose); }
+
+.preco-desc { flex:1; font-size:12px; color:var(--text-soft); }
+
+.preco-numero {
+  font-family:'Playfair Display',serif;
+  font-size:18px; font-weight:500;
+  text-align:right;
+}
+.preco-numero.avista { color: var(--green); }
+.preco-numero.c1x    { color: var(--gold); }
+.preco-numero.c6x    { color: var(--rose); }
+
+.preco-parcela {
+  font-size:11px; color:var(--text-soft);
+  text-align:right; margin-top:1px;
+}
+
+.tag-popular {
+  display:inline-block; background:#FFF0E8;
+  color:var(--rose); font-size:9px; font-weight:600;
+  letter-spacing:0.08em; text-transform:uppercase;
+  border-radius:4px; padding:2px 6px; margin-left:6px;
+  vertical-align:middle;
+}
+.tag-combo {
+  display:inline-block; background:var(--green-bg);
+  color:var(--green); font-size:9px; font-weight:600;
+  letter-spacing:0.08em; text-transform:uppercase;
+  border-radius:4px; padding:2px 6px; margin-left:6px;
+  vertical-align:middle;
+}
+
+/* Chevron */
+.chevron {
+  color:var(--nude); font-size:12px;
+  transition:transform 0.2s; flex-shrink:0;
+}
+.proc-card.open .chevron { transform:rotate(180deg); }
+
+/* ── NOTAS RODAPÉ */
+.footer-notes {
+  margin:24px 24px 32px;
+  background: var(--mocha);
+  border-radius:12px; padding:18px 20px;
+  color:#C4B4A8; font-size:12px; line-height:1.8;
+}
+.footer-notes strong { color:#F0E4DC; }
+
+/* hidden */
+.hidden { display:none !important; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <h1>Dra. Letícia Farah</h1>
+    <div class="header-sub">Harmonização Orofacial · Sedação Consciente · Balneário Camboriú</div>
+    <div class="header-badges">
+      <span class="badge-info">Pix/dinheiro → 5% off</span>
+      <span class="badge-info">Crédito 1x → taxa embutida</span>
+      <span class="badge-info">Até 6x → taxa embutida</span>
+    </div>
+  </div>
+</div>
+
+<div class="legenda">
+  <div class="leg"><div class="leg-dot" style="background:#2D6A4F"></div>À vista (Pix)</div>
+  <div class="leg"><div class="leg-dot" style="background:#9A7B4F"></div>Crédito 1x</div>
+  <div class="leg"><div class="leg-dot" style="background:#B07B62"></div>Crédito até 6x</div>
+</div>
+
+<div class="filters">
+  <button class="filter-btn active" onclick="filtrar('todos')">Todos</button>
+  <button class="filter-btn" onclick="filtrar('botox')">Toxina Botulínica</button>
+  <button class="filter-btn" onclick="filtrar('preenche')">Preenchimento</button>
+  <button class="filter-btn" onclick="filtrar('bioestim')">Bioestimuladores</button>
+  <button class="filter-btn" onclick="filtrar('pele')">Pele & PDRN</button>
+  <button class="filter-btn" onclick="filtrar('esvazia')">Esvaziadores</button>
+  <button class="filter-btn" onclick="filtrar('sedacao')">Sedação</button>
+</div>
+
+<div id="conteudo"></div>
+
+<div class="footer-notes">
+  <strong>Como usar:</strong> toque no procedimento para ver os 3 valores.<br>
+  <strong>À vista</strong> = Pix ou dinheiro com 5% de desconto — você recebe mais.<br>
+  <strong>Crédito 1x e até 6x</strong> = taxa da maquininha já embutida no preço — paciente paga esse valor e você recebe o equivalente à tabela.<br>
+  <strong>Máx. recomendado: 6x.</strong> Acima disso a taxa come 9–12% da sua margem.
+</div>
+
+<script>
+// ── Funções de precificação psicológica
+function avista(p)  { return arred(p * 0.95); }
+function c1x(p)     { return arred(p / 0.9691); }
+function c6x(p)     { return arred(p / 0.9181); }
+
+function arred(v) {
+  // Arredonda para múltiplo de 50, terminando preferencialmente em 90 ou 50
+  // Estratégia: arredonda para 50 mais próximo, depois ajusta para -10 (ex: 1850→1890, 1900→1890)
+  let base = Math.round(v / 50) * 50;
+  // Se base termina em 00, vai para x90 abaixo (mais barato psicologicamente)
+  if (base % 100 === 0) base = base - 10;
+  // Se termina em 50, mantém (ex: 1.550, 2.050)
+  return base;
+}
+
+function fmt(v) {
+  return 'R$\u00a0' + v.toLocaleString('pt-BR');
+}
+function fmtParc(total, n) {
+  const p = (total/n);
+  return fmt(Math.round(p/10)*10) + ' /mês';
+}
+
+// ── Dados completos
+const DADOS = {
+  botox: {
+    titulo: "Toxina Botulínica · Xeomin",
+    icon: "✦",
+    procs: [
+      { nome:"Full Face", detalhe:"Terço sup. + Bunny lines + Nariz + Mento · 60–80U", tabela:1875, popular:true },
+      { nome:"Terço Superior", detalhe:"Frontal + Glabela + Patas de galinha · 40–60U", tabela:1540 },
+      { nome:"↳ Frontal isolado", detalhe:"10–20U", tabela:1035 },
+      { nome:"↳ Glabela isolada", detalhe:"20–30U", tabela:1090 },
+      { nome:"↳ Patas de galinha", detalhe:"bilateral · 12–20U", tabela:1035 },
+      { nome:"Efeito Nefertiti", detalhe:"Platisma + ângulo mandibular + pescoço · 30–50U", tabela:1390 },
+      { nome:"Rosácea / Pele Oleosa", detalhe:"Microbotox superficial · 40–60U", tabela:1540 },
+      { nome:"Terço Inferior + Pescoço", detalhe:"Mento + DAO + Platisma + Marionete · 30–40U", tabela:1290 },
+      { nome:"Bunny Lines + Nariz", detalhe:"Nasalis + ponta nasal · 10–15U", tabela:890 },
+      { nome:"Complemento / Reforço", detalhe:"Adição na mesma sessão — sem retorno extra", tabela:350 },
+    ]
+  },
+  preenche: {
+    titulo: "Preenchimento com AH · UP Ilikia",
+    icon: "◈",
+    procs: [
+      { nome:"Lábios — Volume", detalhe:"Volumização + contorno + hidratação · 1ml", tabela:1490, popular:true },
+      { nome:"Lábios — Hidratação / Contorno", detalhe:"Realce natural, sem volume excessivo · 0,5ml", tabela:1150 },
+      { nome:"Malar / Zigoma", detalhe:"Projeção e definição bilateral · 2ml", tabela:2190 },
+      { nome:"Contorno Mandibular", detalhe:"Definição ângulo + corpo bilateral · 4ml (2ml/lado)", tabela:3590 },
+      { nome:"Pré-Jowl", detalhe:"Suporte mandibular inferior · 1ml", tabela:1490 },
+      { nome:"Rinomodelação", detalhe:"Dorso + ponta nasal + perfil · 0,5–1ml", tabela:1490 },
+      { nome:"Queixo / Mento", detalhe:"Projeção + definição + perfiloplastia · 1ml", tabela:1490 },
+      { nome:"Periorbital / Olheiras", detalhe:"Tear trough · 1ml", tabela:1490 },
+      { nome:"Skinbooster Facial", detalhe:"Hidratação profunda — face completa · 2ml", tabela:2190 },
+      { nome:"Perfiloplastia Completa", detalhe:"Nariz + queixo + lábio + mandíbula · 3–4ml", tabela:3590 },
+      { nome:"Protocolo Personalizado ★", detalhe:"Combinação livre: malar + mandíbula + lábio etc. · 6ml", tabela:4950, popular:true },
+    ]
+  },
+  bioestim: {
+    titulo: "Bioestimuladores de Colágeno",
+    icon: "◉",
+    procs: [
+      { nome:"Sculptra", detalhe:"APLA — 2 frascos / por sessão · 2–3 sessões", tabela:5950, popular:true },
+      { nome:"Radiesse Duo 1,5ml", detalhe:"Bioremodelação — face ou mãos", tabela:2840 },
+      { nome:"Radiesse Duo 3,0ml", detalhe:"Bioremodelação corporal ou face extensa", tabela:4290 },
+      { nome:"Radiesse Plus 1,5ml c/ Lidocaína", detalhe:"Colágeno + volume + maior conforto", tabela:2840 },
+      { nome:"Stiim Hidroxiapatita 1,5ml", detalhe:"Bioestimulação + remodelação — Ilikia", tabela:2590 },
+    ]
+  },
+  pele: {
+    titulo: "Pele · PDRN & Exossomos · Biometil",
+    icon: "✿",
+    procs: [
+      { nome:"PDRN + Exossomos", detalhe:"Combinação regenerativa avançada · ref. 1207", tabela:2590, popular:true },
+      { nome:"PDRN Rejuvenescimento Facial", detalhe:"1 frasco 10ml + ampola 5ml · ref. 1200", tabela:1890 },
+      { nome:"PDRN", detalhe:"Polidesoxirribonucleotídeo · ref. 1088", tabela:1990 },
+      { nome:"Lhala Peel — Glass Skin", detalhe:"Peeling coreano — renovação + luminosidade", tabela:990 },
+      { nome:"Dermorevitalização", detalhe:"Vitaminas + antioxidantes + ácido hialurônico", tabela:1290 },
+    ]
+  },
+  esvazia: {
+    titulo: "Esvaziadores de Gordura Facial",
+    icon: "◎",
+    procs: [
+      { nome:"Emagrecimento Facial", detalhe:"Pacote 2 sessões — Desoxicolato + SAC + DMAE", tabela:1650 },
+      { nome:"Gordura Submentoniana / Papada", detalhe:"Pacote 4 sessões — Deoxycholate 1%", tabela:3490 },
+    ]
+  },
+  sedacao: {
+    titulo: "Sedação com Óxido Nitroso · Add-on",
+    icon: "☁",
+    procs: [
+      { nome:"Sedação — Até 30 min", detalhe:"Add-on em qualquer procedimento", tabela:350 },
+      { nome:"Sedação — 30 a 60 min", detalhe:"Add-on em qualquer procedimento", tabela:490 },
+      { nome:"Sedação — 60 a 90 min", detalhe:"Add-on em qualquer procedimento", tabela:690 },
+    ]
+  }
+};
+
+let filtroAtivo = 'todos';
+
+function filtrar(cat) {
+  filtroAtivo = cat;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  renderizar();
+}
+
+function toggleCard(id) {
+  const card = document.getElementById(id);
+  const precos = document.getElementById(id + '-precos');
+  card.classList.toggle('open');
+  precos.classList.toggle('open');
+}
+
+function renderizar() {
+  const conteudo = document.getElementById('conteudo');
+  let html = '';
+
+  const categorias = filtroAtivo === 'todos'
+    ? Object.keys(DADOS)
+    : [filtroAtivo];
+
+  categorias.forEach(cat => {
+    const secao = DADOS[cat];
+    html += `<div class="section" data-cat="${cat}">`;
+    html += `<div class="section-header">
+      <div class="section-line"></div>
+      <div class="section-title">${secao.icon} ${secao.titulo}</div>
+      <div class="section-line"></div>
+    </div>`;
+
+    secao.procs.forEach((p, idx) => {
+      const id = cat + '-' + idx;
+      const av  = avista(p.tabela);
+      const c1  = c1x(p.tabela);
+      const c6  = c6x(p.tabela);
+      const pop = p.popular ? '<span class="tag-popular">Popular</span>' : '';
+
+      html += `
+      <div class="proc-card" id="${id}">
+        <div class="proc-top" onclick="toggleCard('${id}')">
+          <div class="proc-icon">${secao.icon}</div>
+          <div class="proc-info">
+            <div class="proc-name">${p.nome}${pop}</div>
+            <div class="proc-detail">${p.detalhe}</div>
+          </div>
+          <div class="proc-preco-main">
+            <div class="preco-label">Pix / dinheiro</div>
+            <div class="preco-val">${fmt(av)}</div>
+          </div>
+          <div class="chevron">▼</div>
+        </div>
+        <div class="proc-precos" id="${id}-precos">
+          <div class="preco-row">
+            <div class="preco-tipo avista">À Vista</div>
+            <div class="preco-desc">Pix ou dinheiro · 5% off</div>
+            <div>
+              <div class="preco-numero avista">${fmt(av)}</div>
+            </div>
+          </div>
+          <div class="preco-row">
+            <div class="preco-tipo c1x">Crédito 1x</div>
+            <div class="preco-desc">Taxa 3,09% embutida</div>
+            <div>
+              <div class="preco-numero c1x">${fmt(c1)}</div>
+            </div>
+          </div>
+          <div class="preco-row">
+            <div class="preco-tipo c6x">Até 6x</div>
+            <div class="preco-desc">Taxa 8,19% embutida</div>
+            <div>
+              <div class="preco-numero c6x">${fmt(c6)}</div>
+              <div class="preco-parcela">6x de ${fmtParc(c6,6)}</div>
+            </div>
+          </div>
+        </div>
+      </div>`;
+    });
+
+    html += '</div>';
+  });
+
+  conteudo.innerHTML = html;
+}
+
+renderizar();
+</script>
+</body>
+</html>
